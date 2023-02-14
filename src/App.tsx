@@ -2,20 +2,14 @@ import React, { useState } from "react";
 import "./App.css";
 import Help from "./components/Help/Help";
 import Listing from "./components/Listing/Listing";
-import OldLists from "./components/OldLists/OldLists";
 import Shopping from "./components/Shopping/Shopping";
-import tabsData from "./components/Help/help.json";
-import { createListview } from "./utils";
+import tabsData from "./components/object.json";
+import { createListview as createListView } from "./utils";
 
 function App() {
   const [currentTab, setCurrentTab] = useState("Listing");
   const [listingView, setListingView] = useState([
-    {  color: 0,
-      id: '',
-      value: '',
-      crossedOut: false,
-      prevOrder: 0,
-      order: 0, },
+    { color: 0, id: "", value: "", crossedOut: false, prevOrder: 0, order: 0 },
   ]);
 
   const handleTabClicked = (e: any) => {
@@ -36,20 +30,23 @@ function App() {
       ))}
     </div>
   );
-
+  const listing = localStorage.getItem("myShoppingList") || '';
   const getListing = (listing: any) => {
     if (listing) {
       setCurrentTab("Shopping");
     }
-    setListingView(createListview(listing));
+    setListingView(createListView(listing));
+    localStorage.setItem("myShoppingList", listing);
   };
 
   return (
     <div className="App">
       {Tabs}
-      {currentTab === "Listing" && <Listing getListing={getListing} />}
-      {currentTab === "Shopping" && <Shopping listingView={listingView} />}
-      {currentTab === "OldLits" && <OldLists />}
+      {currentTab === "Listing" && (
+        <Listing getListing={getListing} listing={listing} />
+      )}
+      {(currentTab === "Shopping" && listingView[0].value!=='') && <Shopping listingView={listingView} />}
+      {(currentTab === "Shopping" && listingView[0].value==='') && <h1>Please input listing first!</h1>}
       {currentTab === "Help" && <Help />}
     </div>
   );

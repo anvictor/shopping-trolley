@@ -1,6 +1,6 @@
 {
   "buttonTitles": ["EN", "UA", "RU"],
-  "tabTitles": ["Listing", "Shopping", "OldLits", "Help"],
+  "tabTitles": ["Listing", "Shopping", "Help"],
   "colorButtons": [
     { "id": "0", "color": "#E6E694" },
     { "id": "1", "color": "#EC9198" },

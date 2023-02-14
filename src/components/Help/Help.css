@@ -1,11 +1,16 @@
-.currentLang{
+* {
+  outline: none;
+}
+.langButtonsWrapper{
+  width: 200px;
+  text-align: center;
+}
+.current {
   color: red;
+}
+.lang {
   cursor: pointer;
 }
-.lang{
-  color: blue;
-  cursor: pointer;
-}
-.divider{
-  color:black;
+.divider {
+  color: black;
 }

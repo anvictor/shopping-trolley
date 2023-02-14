@@ -1,18 +1,22 @@
 import React, { useState } from "react";
+import "./Listing.css";
 
-const Listing = (props: { getListing: any }) => {
-  const [listText, setListText] = useState("");
-  const { getListing } = props;
+const Listing = (props: { getListing: Function; listing: string }) => {
+  const { getListing, listing } = props;
+  const [listText, setListText] = useState(listing);
 
-  function handleSubmit(e: any) {
+  const handleReset = (e: any) => {
+    e.preventDefault();
+    getListing('');
+    setListText('');
+  };
+  const handleSubmit = (e: any) => {
     e.preventDefault();
     getListing(listText);
-  }
+  };
 
   return (
-    <div className="App">
-      <form>
-        <label>Listing:</label>
+      <form className="listingWrapper">
         <textarea
           placeholder="Copy, Write or
             Dictate items.
@@ -20,7 +24,7 @@ const Listing = (props: { getListing: any }) => {
             Use the first item as a list header.
             EXAMPLE:
             my list, buy milk, plant a tree, build a house"
-          className="form-control"
+          className="inputListArea"
           rows={10}
           id="listing"
           name="name"
@@ -28,11 +32,13 @@ const Listing = (props: { getListing: any }) => {
           onChange={(e) => setListText(e.target.value)}
         ></textarea>
 
-        <button onClick={handleSubmit} type="submit">
+        <button className="Reset_X" onClick={handleReset} type="reset">
+          X
+        </button>
+        <button className="submit" onClick={handleSubmit} type="submit">
           Submit
         </button>
       </form>
-    </div>
   );
 };
 

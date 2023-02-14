@@ -1,19 +1,22 @@
+* {
+  outline: none;
+}
 .App {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-.tabs{
+.tabs {
   display: flex;
   justify-content: center;
-  align-items:center;
+  align-items: center;
 }
-.tab{
+.tab {
   width: 70px;
   margin: 5px;
   padding: 5px;
 }
-.currentTab{
+.currentTab {
   background-color: darkslategray;
 }

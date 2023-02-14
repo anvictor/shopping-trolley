@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Languages from "./help.json";
+import Languages from "../object.json";
 import "./Help.css";
 export const Help = () => {
   const [currentLang, setCurrentLang] = useState("UA");
@@ -7,19 +7,19 @@ export const Help = () => {
     setCurrentLang(e.target.dataset.value);
   };
   const Buttons = () => (
-    <>
+    <div className="langButtonsWrapper">
       {Languages.buttonTitles.map((lang, index) => (
         <span
           key={lang}
           data-value={lang}
-          className={lang === currentLang ? "currentLang" : "lang"}
+          className={lang === currentLang ? "current lang" : "lang"}
           onClick={handleLangClicked}
         >
           [{lang}]
           {index < lang.length && <span className="divider">{" / "}</span>}
         </span>
       ))}
-    </>
+    </div>
   );
   const helpTexsts: any = {
     EN: Languages["EN"],

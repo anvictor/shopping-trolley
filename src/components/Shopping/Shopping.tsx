@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import colorsData from "../Help/help.json";
+import colorsData from "../object.json";
 
 import "./Shopping.css";
 const Shopping = (props: { listingView: any }) => {

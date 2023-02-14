@@ -1,3 +1,6 @@
+* {
+  outline: none;
+}
 .noDots {
   list-style-type: none;
   padding: 0;
@@ -38,7 +41,7 @@
 }
 .itemCrossedOut {
   text-decoration: line-through;
-  color:rgb(77, 77, 77)
+  color: rgb(77, 77, 77);
 }
 .itemColor0 {
   background-color: #e6e694;
@@ -69,22 +72,34 @@
 }
 
 @keyframes down {
-  0%   {top:0px;opacity:1}
-  100%  {top:200px;opacity:0}
+  0% {
+    top: 0px;
+    opacity: 1;
+  }
+  100% {
+    top: 200px;
+    opacity: 0;
+  }
 }
 
 @keyframes up {
-  0%   {top:0px;opacity:1}
-  100%  {top:-200px;opacity:0}
+  0% {
+    top: 0px;
+    opacity: 1;
+  }
+  100% {
+    top: -200px;
+    opacity: 0;
+  }
 }
 
-.animatedUp{
+.animatedUp {
   top: -20px;
   z-index: 100;
   animation-name: up;
   animation-duration: 0.5s;
 }
-.animatedDown{
+.animatedDown {
   top: 20px;
   z-index: 100;
   animation-name: down;

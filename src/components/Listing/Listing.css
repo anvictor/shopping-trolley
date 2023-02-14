@@ -1,0 +1,30 @@
+* {
+  outline: none;
+}
+.listingWrapper {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.inputListArea {
+  border: 12px solid gray;
+  border-radius: 6px;
+  padding: 20px 5px 5px;
+}
+.Reset_X {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  top: 17px;
+  right: 17px;
+  padding: 0px 0px 0px 1px;
+}
+.Reset_X:focus:not(:focus-visible) {
+  box-shadow: 1px 1px 5px rgba(1, 1, 0, 0.7);
+}
+.submit {
+  border-radius: 6px;
+}
+.submit:focus:not(:focus-visible) {
+  box-shadow: 1px 1px 5px rgba(1, 1, 0, 0.7);
+}

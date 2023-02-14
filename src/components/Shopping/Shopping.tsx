@@ -17,7 +17,6 @@ const Shopping = (props: { listingView: any }) => {
     item.prevOrder = item.order;
     item.order = 10 * item.crossedOut + item.color;
     item.class = item.order < item.prevOrder ? "animatedUp" : "animatedDown";
-    console.log("ordnung");
 
     return item;
   };
@@ -32,7 +31,6 @@ const Shopping = (props: { listingView: any }) => {
   }) => {
     item.prevOrder = item.order;
     item.class = "";
-    console.log("clearPrev");
 
     return item;
   };
@@ -44,7 +42,17 @@ const Shopping = (props: { listingView: any }) => {
   const getItem = (list: any[], itemId: any) => {
     return list.filter((item) => item.id === itemId)[0];
   };
-  const animateReorder = (item: { prevOrder: any; order: any; crossedOut: number; color: number; id: string; class: string; }, localShoppingList: any[]) => {
+  const animateReorder = (
+    item: {
+      prevOrder: any;
+      order: any;
+      crossedOut: number;
+      color: number;
+      id: string;
+      class: string;
+    },
+    localShoppingList: any[]
+  ) => {
     prepareOrdering(item);
     setShoppingList([...localShoppingList]);
     setTimeout(() => {
@@ -62,14 +70,12 @@ const Shopping = (props: { listingView: any }) => {
       const item = getItem(localShoppingList, itemId);
       item.crossedOut = !item.crossedOut;
       animateReorder(item, localShoppingList);
-
     } else {
       const itemId = e.target.parentNode.parentNode.dataset.value;
       const itemColor = +e.target.dataset.value;
       const item = getItem(localShoppingList, itemId);
       item.color = itemColor;
       animateReorder(item, localShoppingList);
-     
     }
   };
 

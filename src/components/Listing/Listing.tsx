@@ -7,8 +7,8 @@ const Listing = (props: { getListing: Function; listing: string }) => {
 
   const handleReset = (e: any) => {
     e.preventDefault();
-    getListing('');
-    setListText('');
+    getListing("");
+    setListText("");
   };
   const handleSubmit = (e: any) => {
     e.preventDefault();
@@ -16,29 +16,29 @@ const Listing = (props: { getListing: Function; listing: string }) => {
   };
 
   return (
-      <form className="listingWrapper">
-        <textarea
-          placeholder="Copy, Write or
+    <form className="listingWrapper">
+      <textarea
+        placeholder="Copy, Write or
             Dictate items.
             Separate them with commas (,)
             Use the first item as a list header.
             EXAMPLE:
             my list, buy milk, plant a tree, build a house"
-          className="inputListArea"
-          rows={10}
-          id="listing"
-          name="name"
-          value={listText}
-          onChange={(e) => setListText(e.target.value)}
-        ></textarea>
+        className="inputListArea"
+        rows={10}
+        id="listing"
+        name="name"
+        value={listText}
+        onChange={(e) => setListText(e.target.value)}
+      ></textarea>
 
-        <button className="Reset_X" onClick={handleReset} type="reset">
-          X
-        </button>
-        <button className="submit" onClick={handleSubmit} type="submit">
-          Submit
-        </button>
-      </form>
+      <button className="Reset_X" onClick={handleReset} type="reset">
+        X
+      </button>
+      <button className="submit" onClick={handleSubmit} type="submit">
+        Submit
+      </button>
+    </form>
   );
 };
 

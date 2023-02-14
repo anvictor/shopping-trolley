@@ -30,7 +30,7 @@ function App() {
       ))}
     </div>
   );
-  const listing = localStorage.getItem("myShoppingList") || '';
+  const listing = localStorage.getItem("myShoppingList") || "";
   const getListing = (listing: any) => {
     if (listing) {
       setCurrentTab("Shopping");
@@ -45,8 +45,12 @@ function App() {
       {currentTab === "Listing" && (
         <Listing getListing={getListing} listing={listing} />
       )}
-      {(currentTab === "Shopping" && listingView[0].value!=='') && <Shopping listingView={listingView} />}
-      {(currentTab === "Shopping" && listingView[0].value==='') && <h1>Please input listing first!</h1>}
+      {currentTab === "Shopping" && listingView[0].value !== "" && (
+        <Shopping listingView={listingView} />
+      )}
+      {currentTab === "Shopping" && listingView[0].value === "" && (
+        <h1>Please input listing first!</h1>
+      )}
       {currentTab === "Help" && <Help />}
     </div>
   );

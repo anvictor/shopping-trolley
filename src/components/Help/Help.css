@@ -1,0 +1,11 @@
+.currentLang{
+  color: red;
+  cursor: pointer;
+}
+.lang{
+  color: blue;
+  cursor: pointer;
+}
+.divider{
+  color:black;
+}

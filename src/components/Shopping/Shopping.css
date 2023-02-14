@@ -1,0 +1,92 @@
+.noDots {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+.item {
+  border: 1px solid gray;
+  border-radius: 4px;
+  margin: 5px;
+  padding: 5px 35px;
+  max-width: 250px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+}
+.button {
+  margin: 2px;
+  border: 1px solid gray;
+  border-radius: 2px;
+}
+.cossOutButton {
+  position: absolute;
+  right: 2px;
+  top: 2px;
+}
+.buttonsLine {
+  display: flex;
+  justify-content: center;
+}
+
+.out {
+  background-color: rgb(11, 82, 43);
+  color: rgb(199, 199, 199);
+}
+.itemCrossedOut {
+  text-decoration: line-through;
+  color:rgb(77, 77, 77)
+}
+.itemColor0 {
+  background-color: #e6e694;
+}
+.itemColor1 {
+  background-color: #ec9198;
+}
+.itemColor2 {
+  background-color: #6fc48c;
+}
+.itemColor3 {
+  background-color: #f79a46;
+}
+.itemColor4 {
+  background-color: #bdcfa5;
+}
+.itemColor5 {
+  background-color: #ff7f50;
+}
+.itemColor6 {
+  background-color: #579ed9;
+}
+.itemColor7 {
+  background-color: #ffc107;
+}
+.itemColor8 {
+  background-color: #50e9ff;
+}
+
+@keyframes down {
+  0%   {top:0px;opacity:1}
+  100%  {top:200px;opacity:0}
+}
+
+@keyframes up {
+  0%   {top:0px;opacity:1}
+  100%  {top:-200px;opacity:0}
+}
+
+.animatedUp{
+  top: -20px;
+  z-index: 100;
+  animation-name: up;
+  animation-duration: 0.5s;
+}
+.animatedDown{
+  top: 20px;
+  z-index: 100;
+  animation-name: down;
+  animation-duration: 0.5s;
+}

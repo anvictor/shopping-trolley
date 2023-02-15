@@ -7,7 +7,7 @@ const createListview = (listing: string) => {
 
   const arr0 = prepareToSplit4.split(";");
   const arr = new Set<string>();
-  arr0.forEach(item=>arr.add(item));
+  arr0.forEach((item) => arr.add(item));
   const listingView: {
     color: number;
     id: string;
@@ -17,16 +17,18 @@ const createListview = (listing: string) => {
     order: number;
     class: string;
   }[] = [];
-  arr.forEach((element, index) => {
-    listingView.push({
-      color: 0,
-      id: `id_${element.trim()}`,
-      value: element.trim(),
-      crossedOut: false,
-      prevOrder: 0,
-      order: 0,
-      class:'',
-    });
+  arr.forEach((element) => {
+    if (element.trim()) {
+      listingView.push({
+        color: 0,
+        id: `id_${element.trim()}`,
+        value: element.trim(),
+        crossedOut: false,
+        prevOrder: 0,
+        order: 0,
+        class: "",
+      });
+    }
   });
   return listingView;
 };

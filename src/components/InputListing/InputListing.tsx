@@ -1,29 +1,32 @@
 import React, { useState } from "react";
-import "./Listing.css";
+import "./InputListing.css";
 
-const Listing = (props: { getListing: Function; listing: string }) => {
-  const { getListing, listing } = props;
+interface ListingProps {
+  getListing: Function;
+  listing: string;
+}
+
+function Listing({ getListing, listing }: ListingProps) {
   const [listText, setListText] = useState(listing);
 
-  const handleReset = (e: any) => {
-    e.preventDefault();
+  const handleReset = () => {
     getListing("");
     setListText("");
   };
-  const handleSubmit = (e: any) => {
-    e.preventDefault();
+  const handleSubmit = () => {
     getListing(listText);
   };
 
   return (
     <form className="listingWrapper">
       <textarea
-        placeholder="Copy, Write or
-            Dictate items.
-            Separate them with commas (,)
-            Use the first item as a list header.
-            EXAMPLE:
-            my list, buy milk, plant a tree, build a house"
+        placeholder={`Copy, Write or
+Dictate items
+Separate them with commas (,)
+Use dot (.) in numbers
+  EXAMPLE:
+milk 1L,
+meat 1.5 kg, shugar 2.5 kg`}
         className="inputListArea"
         rows={10}
         id="listing"
@@ -40,6 +43,6 @@ const Listing = (props: { getListing: Function; listing: string }) => {
       </button>
     </form>
   );
-};
+}
 
 export default Listing;

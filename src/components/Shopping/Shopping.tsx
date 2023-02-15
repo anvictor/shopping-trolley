@@ -1,57 +1,41 @@
 import React, { useState } from "react";
-import colorsData from "../object.json";
-
+import colorButtonsData from "../object.json";
+import {listingItem_Type} from '../../types';
 import "./Shopping.css";
-const Shopping = (props: { listingView: any }) => {
-  const { listingView } = props;
-  const [shoppingList, setShoppingList] = useState(listingView);
+const { colorButtons } = colorButtonsData;
 
-  const prepareOrdering = (item: {
-    prevOrder: any;
-    order: any;
-    crossedOut: number;
-    color: number;
-    id: string;
-    class: string;
-  }) => {
+interface ShoppingProps {
+  listingItems: listingItem_Type[];
+}
+
+function Shopping({ listingItems}: ShoppingProps) {
+  const [shoppingList, setShoppingList] = useState(listingItems);
+
+  const prepareOrdering = (item: listingItem_Type) => {
     item.prevOrder = item.order;
-    item.order = 10 * item.crossedOut + item.color;
+    item.order = 10 * +item.crossedOut + item.color;
     item.class = item.order < item.prevOrder ? "animatedUp" : "animatedDown";
 
     return item;
   };
 
-  const clearPrevAnimation = (item: {
-    prevOrder: any;
-    order: any;
-    crossedOut: number;
-    color: number;
-    id: string;
-    class: string;
-  }) => {
+  const clearPrevAnimation = (item: listingItem_Type) => {
     item.prevOrder = item.order;
     item.class = "";
 
     return item;
   };
 
-  const prepareNewSort = (list: any[]) => {
-    return list.sort((a, b) => a.order - b.order);
+  const prepareNewSort = (listingItems: listingItem_Type[]) => {
+    return listingItems.sort((a, b) => a.order - b.order);
   };
 
-  const getItem = (list: any[], itemId: any) => {
-    return list.filter((item) => item.id === itemId)[0];
+  const getItem = (listingItems: listingItem_Type[], itemId: string) => {
+    return listingItems.filter((item) => item.id === itemId)[0];
   };
   const animateReorder = (
-    item: {
-      prevOrder: any;
-      order: any;
-      crossedOut: number;
-      color: number;
-      id: string;
-      class: string;
-    },
-    localShoppingList: any[]
+    item: listingItem_Type,
+    localShoppingList: listingItem_Type[]
   ) => {
     prepareOrdering(item);
     setShoppingList([...localShoppingList]);
@@ -79,9 +63,9 @@ const Shopping = (props: { listingView: any }) => {
     }
   };
 
-  const ColorButtons = () => (
+  const ColorButtons = ({itemColor}:any) => (
     <div className="buttonsLine">
-      {colorsData.colorButtons.map((btn, index) => {
+      {colorButtons.map((btn, index) => {
         if (btn.id === "0") {
           return null;
         }
@@ -90,7 +74,7 @@ const Shopping = (props: { listingView: any }) => {
           <button
             key={btn.id}
             data-value={btn.id}
-            className={`itemColor${btn.id} button`}
+            className={`typeColor${btn.id} button${btn.id==itemColor?"Active":""}`}
             onClick={handleControlBtnClicked}
           >
             {btn.id}
@@ -100,7 +84,9 @@ const Shopping = (props: { listingView: any }) => {
     </div>
   );
 
-  const CrossOut_X = ({ crossedOut }: any) => {
+  const CrossOut_X = (props: any) => {
+const {crossedOut} = props;
+
     return (
       <button
         onClick={handleControlBtnClicked}
@@ -114,22 +100,22 @@ const Shopping = (props: { listingView: any }) => {
 
   return (
     <ul className="noDots" id="listWRapper">
-      {shoppingList.map((item: any) => (
+      {shoppingList.map((item: listingItem_Type) => (
         <li
           id={item.id}
           data-value={item.id}
-          className={`itemColor${item.color} item ${item.class}`}
+          className={`typeColor${item.color} item ${item.class}`}
           key={item.id}
         >
           <span className={`${item.crossedOut ? "itemCrossedOut" : ""}`}>
             {item.value}
           </span>
           <CrossOut_X crossedOut={item.crossedOut} />
-          <ColorButtons />
+          <ColorButtons itemColor={item.color} />
         </li>
       ))}
     </ul>
   );
-};
+}
 
 export default Shopping;

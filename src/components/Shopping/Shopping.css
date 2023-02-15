@@ -22,8 +22,14 @@
 }
 .button {
   margin: 2px;
-  border: 1px solid gray;
+  border: 0.5px solid gray;
   border-radius: 2px;
+}
+.buttonActive {
+  margin: 2px;
+  border: 1px solid rgb(255, 255, 255);
+  border-radius: 2px;
+  color: white;
 }
 .cossOutButton {
   position: absolute;
@@ -39,35 +45,40 @@
   background-color: rgb(11, 82, 43);
   color: rgb(199, 199, 199);
 }
-.itemCrossedOut {
-  text-decoration: line-through;
-  color: rgb(77, 77, 77);
+.value {
+    padding: 12px;
 }
-.itemColor0 {
+.valueCrossedOut {
+  text-decoration: line-through;
+  background-color: rgb(11, 82, 43);
+    color: rgb(199, 199, 199);
+    padding: 12px;
+}
+.typeColor0 {
   background-color: #e6e694;
 }
-.itemColor1 {
+.typeColor1 {
   background-color: #ec9198;
 }
-.itemColor2 {
+.typeColor2 {
   background-color: #6fc48c;
 }
-.itemColor3 {
+.typeColor3 {
   background-color: #f79a46;
 }
-.itemColor4 {
+.typeColor4 {
   background-color: #bdcfa5;
 }
-.itemColor5 {
+.typeColor5 {
   background-color: #ff7f50;
 }
-.itemColor6 {
+.typeColor6 {
   background-color: #579ed9;
 }
-.itemColor7 {
+.typeColor7 {
   background-color: #ffc107;
 }
-.itemColor8 {
+.typeColor8 {
   background-color: #50e9ff;
 }
 

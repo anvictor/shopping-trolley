@@ -8,7 +8,7 @@ const createListview = (listing: string) => {
   const arr0 = prepareToSplit4.split(";");
   const arr = new Set<string>();
   arr0.forEach(item=>arr.add(item));
-  const listView: {
+  const listingView: {
     color: number;
     id: string;
     value: string;
@@ -18,7 +18,7 @@ const createListview = (listing: string) => {
     class: string;
   }[] = [];
   arr.forEach((element, index) => {
-    listView.push({
+    listingView.push({
       color: 0,
       id: `id_${element.trim()}`,
       value: element.trim(),
@@ -28,7 +28,7 @@ const createListview = (listing: string) => {
       class:'',
     });
   });
-  return listView;
+  return listingView;
 };
 
 export { createListview };

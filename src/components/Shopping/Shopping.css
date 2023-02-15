@@ -75,10 +75,18 @@
   0% {
     top: 0px;
     opacity: 1;
+    transform: scale(1);
+  }
+  20% {
+    transform: scale(1.2);
+  }
+  70% {
+    opacity: 1;
   }
   100% {
     top: 200px;
     opacity: 0;
+    transform: scale(1);
   }
 }
 
@@ -86,10 +94,18 @@
   0% {
     top: 0px;
     opacity: 1;
+    transform: scale(1);
+  }
+  20% {
+    transform: scale(1.2);
+  }
+  70% {
+    opacity: 1;
   }
   100% {
     top: -200px;
     opacity: 0;
+    transform: scale(1);
   }
 }
 
@@ -97,11 +113,11 @@
   top: -20px;
   z-index: 100;
   animation-name: up;
-  animation-duration: 0.5s;
+  animation-duration: 200ms;
 }
 .animatedDown {
   top: 20px;
   z-index: 100;
   animation-name: down;
-  animation-duration: 0.5s;
+  animation-duration: 200ms;
 }

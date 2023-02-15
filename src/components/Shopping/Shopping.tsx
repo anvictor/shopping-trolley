@@ -60,7 +60,7 @@ const Shopping = (props: { listingView: any }) => {
       setShoppingList(localShoppingList);
       prepareNewSort(localShoppingList);
       setShoppingList(localShoppingList);
-    }, 300);
+    }, 200);
   };
 
   const handleControlBtnClicked = (e: any) => {

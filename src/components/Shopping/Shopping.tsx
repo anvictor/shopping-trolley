@@ -109,7 +109,7 @@ function Shopping({ listingItems }: ShoppingProps) {
           className={`typeColor${item.color} item ${item.class}`}
           key={item.id}
         >
-          <span className={`${item.crossedOut ? "itemCrossedOut" : ""}`}>
+          <span className={`${item.crossedOut ? "valueCrossedOut" : "value"}`}>
             {item.value}
           </span>
           <CrossOut_X crossedOut={item.crossedOut} />

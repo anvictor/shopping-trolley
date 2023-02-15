@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import colorButtonsData from "../object.json";
-import {listingItem_Type} from '../../types';
+import { listingItem_Type } from "../../types";
 import "./Shopping.css";
 const { colorButtons } = colorButtonsData;
 
@@ -8,7 +8,7 @@ interface ShoppingProps {
   listingItems: listingItem_Type[];
 }
 
-function Shopping({ listingItems}: ShoppingProps) {
+function Shopping({ listingItems }: ShoppingProps) {
   const [shoppingList, setShoppingList] = useState(listingItems);
 
   const prepareOrdering = (item: listingItem_Type) => {
@@ -63,7 +63,7 @@ function Shopping({ listingItems}: ShoppingProps) {
     }
   };
 
-  const ColorButtons = ({itemColor}:any) => (
+  const ColorButtons = ({ itemColor }: any) => (
     <div className="buttonsLine">
       {colorButtons.map((btn, index) => {
         if (btn.id === "0") {
@@ -74,7 +74,9 @@ function Shopping({ listingItems}: ShoppingProps) {
           <button
             key={btn.id}
             data-value={btn.id}
-            className={`typeColor${btn.id} button${btn.id==itemColor?"Active":""}`}
+            className={`typeColor${btn.id} button${
+              btn.id == itemColor ? "Active" : ""
+            }`}
             onClick={handleControlBtnClicked}
           >
             {btn.id}
@@ -85,7 +87,7 @@ function Shopping({ listingItems}: ShoppingProps) {
   );
 
   const CrossOut_X = (props: any) => {
-const {crossedOut} = props;
+    const { crossedOut } = props;
 
     return (
       <button

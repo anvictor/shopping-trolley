@@ -10,7 +10,15 @@ const { tabTitles } = tabsData;
 const App = () => {
   const [currentTab, setCurrentTab] = useState("Listing");
   const [listingView, setListingView] = useState([
-    { color: 0, id: "", value: "", crossedOut: false, prevOrder: 0, order: 0, class: "" },
+    {
+      color: 0,
+      id: "",
+      value: "",
+      crossedOut: false,
+      prevOrder: 0,
+      order: 0,
+      class: "",
+    },
   ]);
 
   const handleTabClicked = (e: any) => {

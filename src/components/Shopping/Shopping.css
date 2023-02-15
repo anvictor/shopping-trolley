@@ -46,13 +46,13 @@
   color: rgb(199, 199, 199);
 }
 .value {
-    padding: 12px;
+  padding: 12px;
 }
 .valueCrossedOut {
   text-decoration: line-through;
   background-color: rgb(11, 82, 43);
-    color: rgb(199, 199, 199);
-    padding: 12px;
+  color: rgb(199, 199, 199);
+  padding: 12px;
 }
 .typeColor0 {
   background-color: #e6e694;

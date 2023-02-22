@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import colorButtonsData from "../object.json";
 import { listingItem_Type } from "../../types";
-import { valueSetMark } from "../../utils";
+import { sortByOrder, valueSetMark } from "../../utils";
 import "./Shopping.css";
 const { colorButtons } = colorButtonsData;
 
@@ -12,7 +12,7 @@ interface ShoppingProps {
 function Shopping({ listingItems }: ShoppingProps) {
   const [shoppingList, setShoppingList] = useState(listingItems);
 
-  const prepareOrdering = (item: listingItem_Type) => {
+  const orderByColorAndCrossedOut = (item: listingItem_Type) => {
     item.prevOrder = item.order;
     item.order = 10 * +item.crossedOut + item.color;
     item.class = item.order < item.prevOrder ? "animatedUp" : "animatedDown";
@@ -27,10 +27,6 @@ function Shopping({ listingItems }: ShoppingProps) {
     return item;
   };
 
-  const prepareNewSort = (listingItems: listingItem_Type[]) => {
-    return listingItems.sort((a, b) => a.order - b.order);
-  };
-
   const getItem = (listingItems: listingItem_Type[], itemId: string) => {
     return listingItems.filter((item) => item.id === itemId)[0];
   };
@@ -38,12 +34,12 @@ function Shopping({ listingItems }: ShoppingProps) {
     item: listingItem_Type,
     localShoppingList: listingItem_Type[]
   ) => {
-    prepareOrdering(item);
+    orderByColorAndCrossedOut(item);
     setShoppingList([...localShoppingList]);
     setTimeout(() => {
       clearPrevAnimation(item);
       setShoppingList(localShoppingList);
-      prepareNewSort(localShoppingList);
+      sortByOrder(localShoppingList);
       setShoppingList(localShoppingList);
     }, 200);
   };

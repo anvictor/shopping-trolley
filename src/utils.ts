@@ -1,5 +1,16 @@
 import { listingItem_Type } from "./types";
 
+const orderByColorAndCrossedOut = (item: listingItem_Type) => {
+  item.prevOrder = item.order;
+  item.order = 10 * +item.crossedOut + item.color;
+
+  return item;
+};
+
+const sortByOrder = (listingItems: listingItem_Type[]) => {
+  return listingItems.sort((a, b) => a.order - b.order);
+};
+
 const clearElement = (text: string) => {
   const bracket = text.slice(1, 2);
   const space = text.slice(3, 4);
@@ -28,7 +39,7 @@ const getCrossedOut = (text: string) => {
   const bracket = text.slice(1, 2);
   const space = text.slice(3, 4);
   const isMark = bracket === ")" && space === " ";
-  const sign = text.slice(2, 1);
+  const sign = text.slice(2, 3);
   const isCrossedOut = isMark ? (sign === "+" ? true : false) : false;
 
   return isCrossedOut;
@@ -69,8 +80,13 @@ const createListview = (listing: string) => {
       });
     }
   });
-  listingView.forEach((item) => valueSetMark(item));
+  listingView.forEach((item) => {
+    valueSetMark(item)
+    orderByColorAndCrossedOut(item)
+  }
+  );
+  sortByOrder(listingView);
   return listingView;
 };
 
-export { createListview, valueSetMark };
+export { createListview, valueSetMark, sortByOrder };

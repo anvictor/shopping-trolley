@@ -18,7 +18,7 @@ function Listing({ getListing, listing }: ListingProps) {
   };
 
   return (
-    <form className="listingWrapper">
+    <div className="listingWrapper">
       <textarea
         placeholder={`Copy, Write or
 Dictate items
@@ -41,7 +41,7 @@ meat 1.5 kg, shugar 2.5 kg`}
       <button className="submit" onClick={handleSubmit} type="submit">
         Submit
       </button>
-    </form>
+    </div>
   );
 }
 

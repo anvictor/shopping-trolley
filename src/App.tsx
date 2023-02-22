@@ -4,7 +4,8 @@ import Help from "./components/Help/Help";
 import InputListing from "./components/InputListing/InputListing";
 import Shopping from "./components/Shopping/Shopping";
 import tabsData from "./components/object.json";
-import { createListview as createListView } from "./utils";
+import { createListview } from "./utils";
+import { listingItem_Type } from "./types";
 const { tabTitles } = tabsData;
 
 const App = () => {
@@ -40,14 +41,20 @@ const App = () => {
     </div>
   );
 
-  const listing = localStorage.getItem("myShoppingList") || "";
+  const listingJSON = localStorage.getItem("myShoppingList") || "";
+  const savedListing = listingJSON ? JSON.parse(listingJSON) : null;
+  const listing =
+    savedListing &&
+    savedListing.map((item: listingItem_Type) => item.value).join(`
+`);
 
   const getListing = (listing: string) => {
     if (listing) {
       setCurrentTab("Shopping");
     }
-    setListingView(createListView(listing));
-    localStorage.setItem("myShoppingList", listing);
+    const listForView = createListview(listing);
+    setListingView(listForView);
+    localStorage.setItem("myShoppingList", JSON.stringify(listForView));
   };
 
   return (

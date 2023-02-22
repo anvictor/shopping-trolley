@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import colorButtonsData from "../object.json";
 import { listingItem_Type } from "../../types";
+import { valueSetMark } from "../../utils";
 import "./Shopping.css";
 const { colorButtons } = colorButtonsData;
 
@@ -53,12 +54,16 @@ function Shopping({ listingItems }: ShoppingProps) {
       const itemId = e.target.parentNode.dataset.value;
       const item = getItem(localShoppingList, itemId);
       item.crossedOut = !item.crossedOut;
+      item.value = valueSetMark(item);
+      localStorage.setItem("myShoppingList", JSON.stringify(localShoppingList));
       animateReorder(item, localShoppingList);
     } else {
       const itemId = e.target.parentNode.parentNode.dataset.value;
       const itemColor = +e.target.dataset.value;
       const item = getItem(localShoppingList, itemId);
       item.color = itemColor;
+      item.value = valueSetMark(item);
+      localStorage.setItem("myShoppingList", JSON.stringify(localShoppingList));
       animateReorder(item, localShoppingList);
     }
   };
@@ -75,7 +80,7 @@ function Shopping({ listingItems }: ShoppingProps) {
             key={btn.id}
             data-value={btn.id}
             className={`typeColor${btn.id} button${
-              btn.id == itemColor ? "Active" : ""
+              btn.id === itemColor ? "Active" : ""
             }`}
             onClick={handleControlBtnClicked}
           >
@@ -86,7 +91,7 @@ function Shopping({ listingItems }: ShoppingProps) {
     </div>
   );
 
-  const CrossOut_X = (props: any) => {
+  const CrossOutX = (props: any) => {
     const { crossedOut } = props;
 
     return (
@@ -112,7 +117,7 @@ function Shopping({ listingItems }: ShoppingProps) {
           <span className={`${item.crossedOut ? "valueCrossedOut" : "value"}`}>
             {item.value}
           </span>
-          <CrossOut_X crossedOut={item.crossedOut} />
+          <CrossOutX crossedOut={item.crossedOut} />
           <ColorButtons itemColor={item.color} />
         </li>
       ))}
